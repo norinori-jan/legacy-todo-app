@@ -73,7 +73,9 @@ public class TodoServiceImpl implements TodoService {
                 .filter(t -> !t.isDeleted())
                 .orElseThrow(() -> new TodoNotFoundException("Todo not found with id: " + id));
         todo.setTitle(request.getTitle());
-        todo.setDescription(request.getDescription());
+        if (request.getDescription() != null) {
+            todo.setDescription(request.getDescription());
+        }
         if (request.getStatus() != null) {
             todo.setStatus(request.getStatus());
         }

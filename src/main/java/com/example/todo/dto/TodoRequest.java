@@ -23,13 +23,11 @@ public class TodoRequest {
     /** Optional description of the todo. */
     private String description;
 
-    /** Status of the todo; defaults to PENDING. */
-    @Builder.Default
-    private TodoStatus status = TodoStatus.PENDING;
+    /** Status of the todo; null is treated as PENDING by the service layer. */
+    private TodoStatus status;
 
-    /** Priority level; defaults to 0. */
-    @Builder.Default
-    private Integer priority = 0;
+    /** Priority level; null is treated as 0 by the service layer. */
+    private Integer priority;
 
     /** Optional due date. */
     @JsonFormat(pattern = "yyyy-MM-dd")
